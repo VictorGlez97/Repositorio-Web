@@ -1,0 +1,237 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11/06/2019, 08:59:13 PM
+    Author     : vichg
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, arial, Helvetica;
+}
+
+body{
+    width: 100%;
+    height: auto;
+    background-image:url("../fondo/estrellas.gif");
+}
+
+#navbar{
+    clear: both;
+    width: 100%;
+    height: 40px;
+    background:  linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 1%, rgba(254,254,254,1) 50%, rgba(209,209,209,1) 94%, rgba(209,209,209,1) 100%);
+    /*background: linear-gradient(to bottom, #778ca3 0px, #4b6584 100%);*/
+}
+
+#navbar ul{
+    list-style: none;
+    margin-left: 2%;
+}
+
+#navbar ul li{
+    float: left;
+    line-height: 44px;
+}
+
+#der{
+    float: right;
+    margin-left: 80%;
+}
+
+#navbar ul li a{
+    display: block;
+    font-family: monospace;
+    font-size: 20px;
+    text-decoration: none;
+    /*color: #a5b1c2;*/
+    color: #2C3A47;
+    margin: 2%;
+}
+
+#der a{
+    text-align: left;
+}
+
+#navbar a:hover{
+    color: #d1d8e0;
+}
+
+#cuerpo{
+    width: 90%;
+    height: 80%;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+#aside{
+    float: left;
+    border: 3px solid #CAD3C8;
+    width: 25%;
+    height: 80%;
+    background: white;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+#principal{
+    float: right;
+    border: 3px solid #CAD3C8;
+    width: 70%;
+    height: 100%;
+    background: white;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+#materias{
+    width: 94%;
+    height: 5%;
+    margin-top: 2%;
+    margin-left: 2%;
+    border: 1px solid black;
+}
+
+#materias a{
+    margin-left: 4%;
+    alignment-adjust: middle;
+}
+
+#forms{
+    margin-top: 4%;
+    display: block;
+}
+
+#ingresa{
+    float: left;
+    border: 2px solid gray;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
+    margin-left: 15%;
+    margin-top: 7%;
+}
+
+#ingresa h2{
+    color: white;
+    font-size: 35px;
+    margin-bottom: 15%;
+    text-align: center;
+    font-family: monospace;
+}
+
+#ingresa label{
+    color: white;
+    margin-bottom: 3%;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+#ingresa input, select{
+    margin-bottom: 4%;
+    font-size: 20px;
+    opacity: 0.7;
+    width: 100%;
+}
+
+#botonen{
+    margin-top: 7%;
+    float: right;
+    padding: 2%;
+    background: #3867D6;
+    border: 2px solid blue;
+    border-radius: 7px;
+    color: white;
+    text-align: center;
+}
+
+#botonen:hover{
+    background: #4b7bec;
+    color: whitesmoke;
+}
+
+#registro{
+    float: right;
+    border: 2px solid gray;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
+    margin-right: 15%;
+}
+
+#registro h2{
+    color: white;
+    font-size: 35px;
+    margin-bottom: 12%;
+    margin-top: 2%;
+    text-align: center;
+    font-family: monospace;
+}
+
+#registro label{
+    color: white;
+    margin-bottom: 3%;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+#registro input, select{
+    margin-bottom: 4%;
+    font-size: 20px;
+    opacity: 0.7;
+    width: 100%;
+}
+
+#registro select{
+    width: 100%;
+}
+
+#botonreg{
+    margin-top: 7%;
+    padding: 2%;
+    float: right;
+    background: #FA8231;
+    border: 2px solid orange;
+    border-radius: 7px;
+    color: white;
+    text-align: center;
+}
+
+#botonreg:hover{
+    background: #FD9644;
+    color: whitesmoke;
+}
+
+#pie{
+    width: 90%;
+    height: 40px;
+    margin-left: 5%;
+    margin-bottom: 0%;
+    margin-top: 3%;
+    background: #182C61;
+    opacity: 0.4;
+}
+
+#pie p{
+    text-align: center;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
