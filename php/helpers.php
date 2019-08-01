@@ -94,6 +94,7 @@ function Conseguir_Mod($conexion){
     return $modulo;
 }
 
+// materia
 function Conseguir_Modulos($conexion, $c_id){
     $sql = "SELECT * FROM modulo WHERE id_curso = $c_id";
     $mod = mysqli_query($conexion, $sql);
@@ -106,6 +107,7 @@ function Conseguir_Modulos($conexion, $c_id){
     return $modulos;
 }
 
+// index
 function Conseguir_Materias($conexion){
     $sql = "SELECT * FROM materias WHERE estatus = 'aceptado'";
     $mat = mysqli_query($conexion, $sql);
@@ -118,6 +120,7 @@ function Conseguir_Materias($conexion){
     return $materias;
 }
 
+// nueva_materia
 function Conseguir_profes($conexion){
     $sql = "SELECT u.id, u.nombre, u.apellido "
             . "FROM usuarios AS u INNER JOIN rol AS r ON u.id_rol = r.id "
@@ -132,6 +135,7 @@ function Conseguir_profes($conexion){
     return $profes;
 }
 
+// materia
 function Mostrar_Mat($conexion, $id){
     $sql = "SELECT m.*, u.nombre, u.apellido, u.id "
             . "FROM materias AS m INNER JOIN prof_mat AS pm ON pm.id_mat = m.id "
@@ -146,3 +150,27 @@ function Mostrar_Mat($conexion, $id){
     
     return $materia;
 }
+
+// php -> inscribirse
+function Mod_Cur_Alu($conexion, $id_mat){
+    $sql = "SELECT c.id, m.id "
+            . "FROM materias AS ma INNER JOIN modulo AS m ON m.id = ma.id_modulo "
+            . "INNER JOIN curso AS c ON c.id = m.id_curso WHERE ma.id = $id_mat";
+    $ids = mysqli_query($conexion, $sql);
+    
+    $cur_mod = array();
+    if (mysqli_num_rows($ids) == 1) {
+        $cur_mod = mysqli_fetch_row($ids);
+    }
+    
+    return $cur_mod;
+}
+
+// cursos
+/*function Cursos_Usuario($conexion, $id){
+    $sql = "SELECT * "
+            . "FROM alu_mat AS am INNER JOIN materias AS m ON m.id = am.id_mat "
+            . "WHERE am.id_alu = $id";
+    
+            
+}*/

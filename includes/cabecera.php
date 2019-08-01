@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
     <!-- <link rel="stylesheet" href="css/estilo.css"> -->
 
@@ -18,7 +19,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <nav class="navbar navbar-dark bg-primary navbar-expand-sm">
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,6 +47,7 @@
                       <?php if($_SESSION['estatus'] != 'espera') :?>
                       <a class="dropdown-item" href="nueva_materia.php"> Agregar Materias </a>
                       <a class="dropdown-item" href="pendientes.php"> Pendientes </a>
+                      <a class="dropdown-item" href="agregar_cm.php"> Agreagar Cursos/Modulos </a>
                       <?php endif; ?>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item bg-danger" style="color: white;" href="php/cerrar_session.php"> Cerrar Session </a>
@@ -74,17 +76,17 @@
                     </div>
                     <?php endif; ?>
                 </div>
-                <a class="btn btn-outline-warning" href="actualizar_usuario.php">
+                <a class="btn btn-outline-warning" href="actualizar_usuario.php?id<?= $_SESSION['id']; ?>">
                   <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']; ?>
                 </a>
             </div>
             <?php endif; ?>
             
             <?php if(!isset($_SESSION['nombre'])) :?>
-            <button type="button" class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#log">
+            <button type="button" class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal" data-target="#log">
                 <img src="img/usuario.png" width="16" height="16" alt="usuario"/>
             </button>
-            <a class="btn btn-outline-info ml-3" href="nuevo_usuario.php"> Registrarme </a>
+            <a class="btn btn-outline-warning ml-3" href="nuevo_usuario.php"> Registrarme </a>
             <?php endif; ?>
         </form>       
         

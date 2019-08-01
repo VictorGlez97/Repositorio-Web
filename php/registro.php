@@ -133,6 +133,8 @@
                     }
                     
                 } elseif ($rol = 3){
+                    var_dump($rol);
+                    die();
                     sesion($nombre, $apellido, $ncontrol, $rol, $estatus);
 
                     echo "<script> alert('TE HAZ REGISTRADO CORRECTAMENTE!!!'); </script>";

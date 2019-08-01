@@ -17,6 +17,7 @@
     </div>
     
         <div class="card-body collapse" id="profes">
+            <h3> Profesores </h3>
             <table class="table table-hover">
                 <thead>
                   <tr>
@@ -49,6 +50,7 @@
         </div>
 
         <div class="card-body collapse" id="adm">
+            <h3> Coordinadores </h3>
             <table class="table table-hover">
                 <thead>
                   <tr>
@@ -81,6 +83,7 @@
         </div>
 
         <div class="card-body collapse" id="mat">
+            <h3> Materias </h3>
             <table class="table table-hover">
                 <thead>
                   <tr>

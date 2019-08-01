@@ -3,7 +3,7 @@
 <?php require_once 'includes/sidebar.php'; ?>
     
     <div class="container-fluid mx-auto" style="width: 80%;">
-        <div class="border border-warning rounded">
+        <div class="border border-info rounded">
             <div class="card card-header mx-auto">
                 Cursos recientemente agregados
             </div>
