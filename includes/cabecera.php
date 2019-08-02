@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     
-    <!-- <link rel="stylesheet" href="css/estilo.css"> -->
+    <link rel="stylesheet" href="css/usuario.css">
 
     <script src="js/script.js"></script>
 
@@ -68,7 +68,7 @@
                     </div>
                     <?php endif; ?>
                     
-                    <?php if($_SESSION['rol'] == 3) :?>
+                    <?php if($_SESSION['rol'] == 3):?>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="cursos.php"> Cursos </a>
                       <div class="dropdown-divider"></div>
@@ -76,7 +76,7 @@
                     </div>
                     <?php endif; ?>
                 </div>
-                <a class="btn btn-outline-warning" href="actualizar_usuario.php?id<?= $_SESSION['id']; ?>">
+                <a class="btn btn-outline-warning" href="usuario.php?id<?= $_SESSION['id']; ?>">
                   <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']; ?>
                 </a>
             </div>
@@ -93,18 +93,4 @@
     </nav>
     
     <?php require_once 'includes/ingresa.php'; ?>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     

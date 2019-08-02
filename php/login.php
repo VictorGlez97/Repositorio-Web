@@ -43,19 +43,26 @@
               if ($verifica_pass){
                   //    GUARDAMOS LOS DATOS EN VARIABLES DE $_SESSION
                   session_start();
-                  $_SESSION['id'] = $user['id'];
+                  $_SESSION['id'] = intval($user['id']);
                   $_SESSION['nombre'] = $user['nombre'];
                   $_SESSION['apellido'] = $user['apellido'];
                   $_SESSION['control'] = $user['ncontrol'];
-                  $_SESSION['rol'] = $user['id_rol'];
+                  $_SESSION['rol'] = intval($user['id_rol']);
+                  $_SESSION['estatus'] = $user['estatus'];
                   
-                  if($_SESSION['estatus'] != $user['estatus']){
+                  /*if($_SESSION['estatus'] != $user['estatus']){
                       unset($_SESSION['estatus']);
                       $_SESSION['estatus'] = $user['estatus'];
-                  }
+                  }*/
                   
                   echo "<script> alert('Haz ingresado correctamente'); </script>";
-                  header("Refresh: 1,URL='../index.php'");
+                  if($_SESSION['rol'] == 3) {
+                      header("Refresh: 1,URL='../principal.php'");
+                  } elseif($_SESSION['rol'] == 2) {
+                      header("Refresh: 1,URL='../index.php'");
+                  } elseif($_SESSION['rol'] == 1) {
+                      header("Refresh: 1,URL='../index.php'");
+                  }
                   
               } else {
                   echo "<script> alert('ERROR: CONTRASEÑA INCORRECTA NC'); </script>";
@@ -79,11 +86,11 @@
               $verifica_pass = password_verify($pass, $user['pass']);
               if ($verifica_pass){
                   session_start();
-                  $_SESSION['id'] = $user['id'];
+                  $_SESSION['id'] = intval($user['id']);
                   $_SESSION['nombre'] = $user['nombre'];
                   $_SESSION['apellido'] = $user['apellido'];
                   $_SESSION['control'] = $user['ncontrol'];
-                  $_SESSION['rol'] = $user['id_rol'];
+                  $_SESSION['rol'] = intval($user['id_rol']);
                   $_SESSION['estatus'] = $user['estatus'];
                   
                   //var_dump($user['estatus']);
@@ -93,8 +100,14 @@
                       $_SESSION['estatus'] = $user['estatus'];
                   }*/
                   
-                  echo "<script> alert('HAZ INGRESADO CORRECTAMENTE'); </script>";
-                  header("Refresh: 1,URL='../index.php'");
+                  echo "<script> alert('Haz ingresado correctamente'); </script>";
+                  if($_SESSION['rol'] == 3) {
+                      header("Refresh: 1,URL='../principal.php'");
+                  } elseif($_SESSION['rol'] == 2) {
+                      header("Refresh: 1,URL='../index.php'");
+                  } elseif($_SESSION['rol'] == 1) {
+                      header("Refresh: 1,URL='../index.php'");
+                  }
                   
               } else {
                   echo "<script> alert('ERROR: CONTRASEÑA INCORRECTA C'); </script>";

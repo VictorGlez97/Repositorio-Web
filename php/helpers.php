@@ -69,6 +69,7 @@ function Pendientes_Mat($conexion){
 }
 
 // sidebar
+// nuevo_modulo
 function Conseguir_Cursos($conexion){
     $sql = "SELECT * FROM curso";
     $cur = mysqli_query($conexion, $sql);
@@ -166,11 +167,31 @@ function Mod_Cur_Alu($conexion, $id_mat){
     return $cur_mod;
 }
 
-// cursos
-/*function Cursos_Usuario($conexion, $id){
-    $sql = "SELECT * "
+// includes -> mis_cursos
+function Materias_Usuario($conexion, $id){
+    $sql = "SELECT m.id, m.materia "
             . "FROM alu_mat AS am INNER JOIN materias AS m ON m.id = am.id_mat "
             . "WHERE am.id_alu = $id";
+    $query = mysqli_query($conexion, $sql);
     
-            
-}*/
+    $materias = array();
+    if (mysqli_num_rows($query) >= 1){
+        $materias = $query;
+    } 
+    
+    return $materias;
+}
+
+// nuevo_modulo
+function Conseguir_Adm($conexion){
+    $sql = "SELECT * FROM usuarios WHERE id_rol = 1 AND estatus = 'aceptado'";
+    $query = mysqli_query($conexion, $sql);
+    
+    $adms = array();
+    if (mysqli_num_rows($query) >= 1){
+        $adms = $query;
+    }
+    
+    return $adms;
+}
+

@@ -25,7 +25,7 @@
         $contraseña_dos = isset($_POST['pass2']) ? mysqli_real_escape_string($bd, $_POST['pass2']) : false;
         
         //      ESTOS DATOS MAS SEGUROS QUE LOS DE ARRIBA 
-        $rol = $_POST['rol'];
+        $rol = intval($_POST['rol']);
         
         if (isset($_POST['curso'])) {
             $admc = intval($_POST['curso']);
@@ -113,32 +113,47 @@
             //var_dump($password_segura);
             
             // INSERTAMOS NUEVOS USUARIOS
-            $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellido', '$ncontrol', '$email', '$password_segura', '$rol', '$estatus')";
+            $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellido', '$ncontrol', '$email', '$password_segura', $rol, '$estatus')";
             $guardar = mysqli_query($bd, $sql);
             
+            $us = "SELECT id FROM usuarios WHERE nombre = '$nombre' AND apellido = '$apellido' AND ncontrol = '$ncontrol' AND correo = '$email'";
+            $id_u = mysqli_query($bd, $us);
+            
+            /*var_dump($id_u);
+            die();*/
+            
             // VERIFICAMOS SI SE GUARDO EL USUARIO
-            if($guardar){
+            if($guardar && $id_u){
                 
-                if($rol = 1 || $rol = 2){
+                $id_us = mysqli_fetch_assoc($id_u);
+                $id = intval($id_us['id']);
+                var_dump($id);
+                var_dump($rol);
+                //die();
+                
+                if($rol == 1 || $rol == 2){
                     
                     if ($rol == 1) {
                     
                         admin_curso($bd, $admc, $nombre, $apellido, $ncontrol, $rol, $estatus);
                     
-                    } else {
-                        sesion($nombre, $apellido, $ncontrol, $rol, $estatus);
+                    } elseif ($rol == 2) {
+                        sesion($id, $nombre, $apellido, $ncontrol, $rol, $estatus);
                         
                         echo "<script> alert('Por el momento te haz REGISTRADO, solo debes esperar a que algun ADM o CORDINADOR te CONFIRME TU REGISTRO para que se puedan ACTIVAR ACCIONES'); </script>";
                         header("Refresh: 1,URL='../index.php'");
+                    } else {
+                        echo "<script> alert('ERROR'); </script>";
+                        header("Refresh: 1,URL='../index.php'");
                     }
                     
-                } elseif ($rol = 3){
+                } elseif ($rol == 3){
                     var_dump($rol);
-                    die();
-                    sesion($nombre, $apellido, $ncontrol, $rol, $estatus);
+                    //die();
+                    sesion($id, $nombre, $apellido, $ncontrol, $rol, $estatus);
 
                     echo "<script> alert('TE HAZ REGISTRADO CORRECTAMENTE!!!'); </script>";
-                    header("Refresh: 1,URL='../index.php'");
+                    header("Refresh: 1,URL='../principal.php'");
                 }
                 
             } else {
@@ -194,11 +209,12 @@
         
     }
     
-    function sesion($nombre, $apellido, $ncontrol, $rol, $estatus){
+    function sesion($id, $nombre, $apellido, $ncontrol, $rol, $estatus){
         session_start();
+        $_SESSION['id'] = $id;
         $_SESSION['nombre'] = $nombre;
         $_SESSION['apellido'] = $apellido;
         $_SESSION['ncontrol'] = $ncontrol;
-        $_SESSION['rol'] = $rol;
+        $_SESSION['rol'] = intval($rol);
         $_SESSION['estatus'] = $estatus;
     }
