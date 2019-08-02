@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1/08/2019, 12:51:26 PM
+    Author     : vichg
+*/
+
+.as {
+    color: black;
+}
+
+.as:hover {
+    background-color: dimgrey;
+    color: white;
+    text-decoration: none;
+}
+
+.btnVer {
+    background-color: rgb(33, 136, 56);
+    color: white;
+    border-radius: 4px;
+    width: 100%;
+    padding: 4px;
+    text-align: center;
+}
+
+.btnVer:hover {
+    background-color: transparent;
+    border-radius: 4px;
+    padding: 2px;
+    border: 2px solid rgb(33, 136, 56);
+    color: rgb(33, 136, 56)
+}
+
+.notifyIcon {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    color: white;
+    background-color: rgb(33, 136, 56);
+    text-align: center;
+}
+    
+.listaTarea {
+    list-style-type: none;
+}
+
+.aT {
+    color: black;
+    cursor: pointer;
+}
+
+.aT:hover {
+    color: black;
+}        
