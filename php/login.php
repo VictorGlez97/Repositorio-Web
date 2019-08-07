@@ -59,9 +59,9 @@
                   if($_SESSION['rol'] == 3) {
                       header("Refresh: 1,URL='../principal.php'");
                   } elseif($_SESSION['rol'] == 2) {
-                      header("Refresh: 1,URL='../index.php'");
+                      header("Refresh: 1,URL='../principal.php'");
                   } elseif($_SESSION['rol'] == 1) {
-                      header("Refresh: 1,URL='../index.php'");
+                      header("Refresh: 1,URL='../principal.php'");
                   }
                   
               } else {
@@ -104,9 +104,9 @@
                   if($_SESSION['rol'] == 3) {
                       header("Refresh: 1,URL='../principal.php'");
                   } elseif($_SESSION['rol'] == 2) {
-                      header("Refresh: 1,URL='../index.php'");
+                      header("Refresh: 1,URL='../principal.php'");
                   } elseif($_SESSION['rol'] == 1) {
-                      header("Refresh: 1,URL='../index.php'");
+                      header("Refresh: 1,URL='../principal.php'");
                   }
                   
               } else {

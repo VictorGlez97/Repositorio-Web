@@ -16,6 +16,7 @@
             $mod = $_POST['mod'];
             $clave = $_POST['clave'];
             
+            // EN EL CASO DE SELECCIONAR UN PROFE
             if(isset($_POST['prof'])) {
                 /*var_dump($_POST);
                 echo 'estoy aqui';
@@ -23,6 +24,7 @@
                 $prof = $_POST['prof'];
                 $estatus = 'aceptado';
             } else {
+                // EN CASO DE SER EL PROFE 
                 $prof = 'no';
                 $estatus = 'espera';
             }
@@ -94,8 +96,8 @@
                 
                 if ($prof == 'no'){
                     
-                    /*$id_p = $_SESSION['id'];
-                    var_dump($id_m);
+                    $id_p = $_SESSION['id'];
+                    /*var_dump($id_m);
                     var_dump($id_p);
                     die();*/
 

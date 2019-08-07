@@ -1,16 +1,16 @@
 <?php require_once 'includes/cabecera.php'; ?>
 
 <?php
-    if(empty($_SESSION['nombre'])){
-        header("Location:index.php");
+    if (empty($_SESSION['nombre'])){
+        header('Location:index.php');
     }
     
-    if($_SESSION['estatus'] = 'aceptado'){
-        header("Location:index.php");
+    if ($_SESSION['estatus'] == 'aceptado'){
+        header('Location:index.php');
     }
     
-    if($_SESSION['rol'] != 1){
-        header("Location:index.php");
+    if ($_SESSION['rol'] != 1){
+        header('Location:index.php');
     }
 ?>
 

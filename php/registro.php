@@ -141,7 +141,7 @@
                         sesion($id, $nombre, $apellido, $ncontrol, $rol, $estatus);
                         
                         echo "<script> alert('Por el momento te haz REGISTRADO, solo debes esperar a que algun ADM o CORDINADOR te CONFIRME TU REGISTRO para que se puedan ACTIVAR ACCIONES'); </script>";
-                        header("Refresh: 1,URL='../index.php'");
+                        header("Refresh: 1,URL='../principal.php'");
                     } else {
                         echo "<script> alert('ERROR'); </script>";
                         header("Refresh: 1,URL='../index.php'");
@@ -194,7 +194,7 @@
             
             if ($adm_cur){
                 echo "<script> alert('Por el momento te haz REGISTRADO, solo debes esperar a que algun ADM o CORDINADOR te CONFIRME TU REGISTRO para que se puedan ACTIVAR ACCIONES'); </script>";
-                header("Refresh: 1,URL='../index.php'");
+                header("Refresh: 1,URL='../principal.php'");
                 
                 sesion($nombre, $apellido, $ncontrol, $rol, $estatus);
                 

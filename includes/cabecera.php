@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     
-    <link rel="stylesheet" href="css/usuario.css">
+    <!--<link rel="stylesheet" href="css/usuario.css">-->
 
     <script src="js/script.js"></script>
 
@@ -38,7 +38,7 @@
                   <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="sr-only">Toggle Dropleft</span>
                   </button>
-                    <?php if($_SESSION['rol'] == 1) :?>
+                    <?php if($_SESSION['rol'] == 1):?>
                     <div class="dropdown-menu">
                       <?php if($_SESSION['estatus'] == 'espera') :?>
                       <a class="dropdown-item disabled" href="#"> Agregar Materias </a>
@@ -47,14 +47,14 @@
                       <?php if($_SESSION['estatus'] != 'espera') :?>
                       <a class="dropdown-item" href="nueva_materia.php"> Agregar Materias </a>
                       <a class="dropdown-item" href="pendientes.php"> Pendientes </a>
-                      <a class="dropdown-item" href="agregar_cm.php"> Agreagar Cursos/Modulos </a>
+                      <a class="dropdown-item" href="nuevo_modulo.php"> Agreagar Cursos/Modulos </a>
                       <?php endif; ?>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item bg-danger" style="color: white;" href="php/cerrar_session.php"> Cerrar Session </a>
                     </div>
                     <?php endif; ?>
                     
-                    <?php if($_SESSION['rol'] == 2) :?>
+                    <?php if($_SESSION['rol'] == 2):?>
                     <div class="dropdown-menu">
                       <?php if($_SESSION['estatus'] == 'espera'){?>
                       <a class="dropdown-item disabled" href="#"> Agregar Materias </a>
@@ -68,7 +68,7 @@
                     </div>
                     <?php endif; ?>
                     
-                    <?php if($_SESSION['rol'] == 3):?>
+                    <?php if($_SESSION['rol'] == 3):var_dump($_SESSION)?>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="cursos.php"> Cursos </a>
                       <div class="dropdown-divider"></div>

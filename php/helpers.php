@@ -70,6 +70,7 @@ function Pendientes_Mat($conexion){
 
 // sidebar
 // nuevo_modulo
+// var_materias
 function Conseguir_Cursos($conexion){
     $sql = "SELECT * FROM curso";
     $cur = mysqli_query($conexion, $sql);
@@ -96,12 +97,25 @@ function Conseguir_Mod($conexion){
 }
 
 // materia
+// ver_materias
 function Conseguir_Modulos($conexion, $c_id){
     $sql = "SELECT * FROM modulo WHERE id_curso = $c_id";
     $mod = mysqli_query($conexion, $sql);
     
     $modulos = array();
     if ($mod && mysqli_num_rows($mod) >= 1){
+        $modulos = $mod;
+    }
+   
+    return $modulos;
+}
+
+function Conseguir_Modulo($conexion, $id){
+    $sql = "SELECT * FROM modulo WHERE id = $id";
+    $mod = mysqli_query($conexion, $sql);
+    
+    $modulos = array();
+    if ($mod && mysqli_num_rows($mod) == 1){
         $modulos = $mod;
     }
    
@@ -125,7 +139,7 @@ function Conseguir_Materias($conexion){
 function Conseguir_profes($conexion){
     $sql = "SELECT u.id, u.nombre, u.apellido "
             . "FROM usuarios AS u INNER JOIN rol AS r ON u.id_rol = r.id "
-            . "WHERE r.rol = 'prof' AND u.estatus = 'aceptado'";
+            . "WHERE (r.rol = 'prof' OR r.rol = 'adm') AND u.estatus = 'aceptado'";
     $prof = mysqli_query($conexion, $sql);
     
     $profes = array();
@@ -194,4 +208,164 @@ function Conseguir_Adm($conexion){
     
     return $adms;
 }
+
+// ver_materias
+function Mat_Modulo ($conexion, $id_mod){
+    $sql = "SELECT m.* FROM materias AS m INNER JOIN modulo AS mo ON mo.id = m.id_modulo WHERE m.estatus = 'aceptado' AND mo.id = $id_mod";
+    $mat = mysqli_query($conexion, $sql);
+    
+    $materias = array();
+    if ($mat && mysqli_num_rows($mat) >= 1){
+        $materias = $mat;
+    }
+   
+    return $materias;
+}
+
+// principal --------------- adm
+function Mat_Mod_Cur ($conexion, $id_cur){
+    $sql = "SELECT m.* "
+            . "FROM materias AS m INNER JOIN modulo AS mo ON mo.id = m.id_modulo "
+            . "INNER JOIN curso AS c ON c.id = mo.id_curso "
+            . "WHERE m.estatus = 'aceptado' AND c.id = $id_cur"; 
+    $mat = mysqli_query($conexion, $sql);
+    
+    $materias = array();
+    if ($mat && mysqli_num_rows($mat) >= 1){
+        $materias = $mat;
+    }
+   
+    return $materias;
+}
+
+function Adm_Curso ($conexion, $id){
+    $sql = "SELECT id, id_curso FROM adm_curso WHERE id_adm = $id";
+    $ids = mysqli_query($conexion, $sql);
+    
+    
+    $ides = array();
+    if ($ids && mysqli_num_rows($ids) == 1){
+        $ides = $ids;
+    }
+    
+    return $ides;
+}
+
+// usuario
+function Usuario ($conexion, $id_us){
+    $sql = "SELECT * FROM usuarios WHERE id = $id_us";
+    $us = mysqli_query($conexion, $sql);
+    
+    $usuario = array();
+    if ($us && mysqli_num_rows($us)){
+        $usuario = $us;
+    }
+    
+    return $usuario;
+}
+
+// principal ------------ prof o adm 
+// ver_tareas
+function Materias_Profe ($conexion, $id_p){
+    $sql = "SELECT m.id, m.materia "
+            . "FROM materias AS m "
+            . "INNER JOIN prof_mat AS pm ON m.id = pm.id_mat "
+            . "WHERE pm.id_prof = $id_p";
+    $mat = mysqli_query($conexion, $sql);
+    
+    $materias = array();
+    if ($mat && mysqli_num_rows($mat)){
+        $materias = $mat;
+    }
+    
+    return $materias;
+}
+
+// nueva_tarea
+function Unidades_mat($conexion, $id_mat){
+    $sql = "SELECT * FROM unidades WHERE id_mat = $id_mat";
+    $uni = mysqli_query($conexion, $sql);
+    
+    $unidades = array();
+    if ($uni && mysqli_num_rows($uni) >= 1){
+        $unidades = $uni;
+    }
+    
+    return $unidades;
+}
+
+// ver_tareas
+function Tareas_mat($conexion, $id_mat){
+    $sql = "SELECT ct.id, ct.tarea, ct.descripcion, ct.f_inicio, ct.f_fin, u.numero, u.unidad "
+            . "FROM conf_tarea AS ct INNER JOIN unidades AS u ON u.id = ct.id_unidad "
+            . "WHERE ct.id_mat = $id_mat";
+    $tar = mysqli_query($conexion, $sql);
+    
+    $tareas = array();
+    if ($tar && mysqli_num_rows($tar) >= 1){
+        $tareas = $tar;
+    }
+    
+    return $tareas;
+}
+
+// curso
+function Conseguir_unidades($conexion, $id_mat){
+    $sql = "SELECT m.materia, u.id, u.numero, u.unidad "
+            . "FROM unidades AS u INNER JOIN materias AS m ON m.id = u.id_mat "
+            . "WHERE m.id = $id_mat";
+    $uni = mysqli_query($conexion, $sql);
+    
+    $unidades = array();
+    if ($uni && mysqli_num_rows($uni) >= 1){
+        $unidades = $uni;
+    }
+    
+    return $unidades;
+}
+
+function Tareas_Unidad($conexion, $id_uni){
+    $sql = "SELECT id, tarea, descripcion, f_inicio, f_fin "
+            . "FROM conf_tarea WHERE id_unidad = $id_uni";
+    $tar = mysqli_query($conexion, $sql);
+    
+    $tareas = array();
+    if ($tar && mysqli_num_rows($tar) >= 1){
+        $tareas = $tar;
+    }
+    
+    return $tareas;
+}
+
+// obs_tarea
+function Tarea($conexion, $id){
+    $sql = "SELECT * FROM conf_tarea WHERE id = $id";
+    $tar = mysqli_query($conexion, $sql);
+    
+    $tarea = array();
+    if ($tar && mysqli_num_rows($tar) == 1){
+        $tarea = $tar;
+    }
+    
+    return $tarea;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
