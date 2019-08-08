@@ -42,22 +42,34 @@
             
             if ($_FILES['doc']['name'] != '') {
                 
+                $archivo = $_FILES['doc']['tmp_name'];  
+                $tam = $_FILES['doc']['size']; 
+                $tipo    = $_FILES['doc']['type']; 
+                $nombre  = $_FILES['doc']['name']; 
+                
+                $fp = fopen($archivo, "rb"); 
+                $contenido = fread($fp, $tam); 
+                $contenido = addslashes($contenido); 
+                fclose($fp);  
+                //var_dump($contenido);
+                //die();
+                
                 $material = addslashes(file_get_contents($_FILES['doc']['tmp_name']));
-                guardar($materia, $obj, $material, $prof, $clave, $estatus, $mod, $bd);
+                guardar($materia, $obj, $contenido, $tipo, $nombre, $prof, $clave, $estatus, $mod, $bd);
                 
             } else {
-                guardar($materia, $obj, 'null', $prof, $clave, $estatus, $mod, $bd);
+                guardar($materia, $obj, false, false, false, $prof, $clave, $estatus, $mod, $bd);
             }
             
         }
     }
         
-        function guardar($materia, $obj, $material, $prof, $clave, $estatus, $mod, $conexion) {
+        function guardar($materia, $obj, $material, $tipo, $nombre, $prof, $clave, $estatus, $mod, $conexion) {
             
-                if ($material != 'null') {
-                    $sql = "INSERT INTO materias VALUES (null, '$materia', '$obj', '$material', '$clave', '$estatus', $mod)";
+                if ($material != false) {
+                    $sql = "INSERT INTO materias VALUES (null, '$materia', '$obj', '$material', '$tipo', '$nombre', '$clave', '$estatus', $mod)";
                 } else {
-                    $sql = "INSERT INTO materias VALUES (null, '$materia', '$obj', null, '$clave', '$estatus', $mod)";
+                    $sql = "INSERT INTO materias VALUES (null, '$materia', '$obj', null, null, null, '$clave', '$estatus', $mod)";
                 }
 
                 $guarda = mysqli_query($conexion, $sql);

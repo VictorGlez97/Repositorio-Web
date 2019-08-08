@@ -120,7 +120,7 @@
                 <div class="card card-body ml-3 mr-3 mb-3" style="width: 30%;">
                     <h5> <?php echo $mat['materia']; ?> </h5>
                     <p class="card-text text-justify" style="font-size: 15px;"> <?= substr($mat['objetivo'], 0, 150).'...' ?> </p>
-                    <a href="accion_mat.php?mat=<?= $mat['id'] ?>" class="btn btn-warning btn-sm"> Observar </a>
+                    <a href="curso.php?id_mat=<?= $mat['id'] ?>&mat=<?= $mat['materia'] ?>" class="btn btn-warning btn-sm"> Observar </a>
                 </div>
                 
                 <?php

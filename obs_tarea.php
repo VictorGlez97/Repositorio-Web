@@ -7,16 +7,16 @@ if (!isset($_GET)){
     $id_tar = intval($_GET['id_tar']);
 }
 
-var_dump($id_tar);
+//var_dump($id_tar);
 ?>
 
     <div class="container-fluid mx-auto row mt-3" style="width: 90%; margin-left:5%">
     <img src="img/usuario.png">&nbsp; &nbsp; &nbsp;<h1> <?= $_SESSION['nombre'].' '.$_SESSION['apellido'] ?> </h1>
 </div>
 
-<?php require_once 'includes/sidebar.php'; ?>
-
 <div class="container-fluid mx-auto mb-4 row">
+    <?php require_once 'includes/sidebar.php'; ?>
+    
     <div class="container-fluid mx-auto" style="width: 60%;">
         <div class="card border-info rounded">
 
@@ -49,5 +49,8 @@ var_dump($id_tar);
             ?>
             
         </div>
+        
     </div><br/>
+    <?php require_once 'includes/dia_tarea.php'; ?>
+</div>
 

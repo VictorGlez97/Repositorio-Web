@@ -152,7 +152,7 @@ function Conseguir_profes($conexion){
 
 // materia
 function Mostrar_Mat($conexion, $id){
-    $sql = "SELECT m.*, u.nombre, u.apellido, u.id "
+    $sql = "SELECT m.id, m.materia, m.objetivo, m.material, m.mat_nombre, m.id_modulo, u.nombre, u.apellido "
             . "FROM materias AS m INNER JOIN prof_mat AS pm ON pm.id_mat = m.id "
             . "INNER JOIN usuarios AS u ON u.id = pm.id_prof "
             . "WHERE m.id = $id";
@@ -160,7 +160,7 @@ function Mostrar_Mat($conexion, $id){
     
     $materia = array();
     if ($mat && mysqli_num_rows($mat) >= 1){
-        $materia = mysqli_fetch_row($mat);
+        $materia = $mat;
     }
     
     return $materia;
@@ -182,6 +182,7 @@ function Mod_Cur_Alu($conexion, $id_mat){
 }
 
 // includes -> mis_cursos
+// ver_usuarios
 function Materias_Usuario($conexion, $id){
     $sql = "SELECT m.id, m.materia "
             . "FROM alu_mat AS am INNER JOIN materias AS m ON m.id = am.id_mat "
@@ -251,7 +252,7 @@ function Adm_Curso ($conexion, $id){
     return $ides;
 }
 
-// usuario
+// ver_usuario
 function Usuario ($conexion, $id_us){
     $sql = "SELECT * FROM usuarios WHERE id = $id_us";
     $us = mysqli_query($conexion, $sql);
@@ -350,8 +351,35 @@ function Tarea($conexion, $id){
     return $tarea;
 }
 
+// dia_tarea
+function Tareas_Pendientes($conexion){
+    $dia_hoy = date('Y-m-d');
+    $sql = "SELECT * FROM `conf_tarea` WHERE f_inicio = '$dia_hoy'";
+    $tar = mysqli_query($conexion, $sql);
+    
+    $tareas = array();
+    if ($tar && mysqli_num_rows($tar) >= 1){
+        $tareas = $tar;
+    }
+    
+    return $tareas;
+}
 
-
+// dia_tarea
+function Tareas_Alu($conexion, $id_alu){
+    $dia_hoy = date('Y-m-d');
+    $sql = "SELECT cf.* "
+            . "FROM conf_tarea AS cf INNER JOIN alu_mat AS am ON am.id_mat = cf.id_mat "
+            . "WHERE am.id_alu = $id_alu AND cf.f_inicio = '$dia_hoy'";
+    $tar = mysqli_query($conexion, $sql);
+    
+    $tareas = array();
+    if ($tar && mysqli_num_rows($tar)){
+        $tareas = $tar;
+    }
+    
+    return $tareas;
+}
 
 
 

@@ -17,7 +17,7 @@
 
 <?php             
             require_once 'includes/dia_tarea.php';
-        } elseif (isset ($_GET['mat'])){
+        } elseif (isset ($_GET['id_mat'])){
             require_once 'includes/sidebar.php';
 ?>            
      

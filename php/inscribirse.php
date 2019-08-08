@@ -6,10 +6,16 @@ if (empty($_SESSION['nombre'])){
     header("Location:../index.php");
 }
 
+var_dump($_POST['id_mat']);
+die();
+
 if (isset($_POST)){
     //var_dump($_POST);
     
     $id_mat = intval($_POST['id_mat']);
+    var_dump($id_mat);
+    var_dump($_POST['id_mat']);
+    //die();
     
     if (isset($_POST['clave'])) {
         $clave = $_POST['clave'];
@@ -58,7 +64,7 @@ function inscrito($conexion, $id_alu, $id_mat){
     
     if ($query){
         echo '<script> alert("FELICIDADES: Te haz inscrito correctamente"); </script>';
-        sesion($conexion, $id_mat);
+        //sesion($conexion, $id_mat);
         header("Refresh:1,URL=../index.php");        
     } else {
         echo '<script> alert("ERROR: Problemas con la BD"); </script>';
@@ -66,12 +72,13 @@ function inscrito($conexion, $id_alu, $id_mat){
     }
 }
 
-function sesion ($conexion, $id_mat){
+/*function sesion ($conexion, $id_mat){
     
     include_once 'helpers.php';
     $res = Mod_Cur_Alu($conexion, $id_mat);
+    $r = mysqli_fetch_assoc($res);
     $_SESSION['curso'] = intval($res[0]);
     $_SESSION['modulo'] = intval($res[1]);
     
-}
+}*/
 

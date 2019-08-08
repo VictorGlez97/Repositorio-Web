@@ -2,10 +2,10 @@
 session_start();
 require_once 'conexion.php';
 
-//var_dump($_POST);
+var_dump($_POST);
 //var_dump($_FILES);
 //var_dump(!empty($_POST));
-//die();
+die();
 
 if (!empty($_POST)) {
     
@@ -15,7 +15,8 @@ if (!empty($_POST)) {
         $id = intval($_SESSION['id']);
         $sql = "SELECT id FROM alu_mat WHERE id_alu =  $id AND id_mat = $id_mat";
         $query = mysqli_query($bd, $sql);
-            
+        $id_tar = $_POST['id_tar'];
+        
         var_dump($query);
         $id_a_m = mysqli_fetch_assoc($query);
         $id_am = intval($id_a_m['id']);
@@ -61,21 +62,21 @@ if (!empty($_POST)) {
         } else {
             
             echo '<script> alert("ERROR: no se ha encontrado un archivo para subir"); </script>';
-            header("Refresh:1, URL=../principal.php");
+            header("Refresh:1, URL=../tareas.php?id_tar=$id_tar");
             
         }
         
     } else {
         
         echo '<script> alert("ERROR: no se ha encontrado un archivo para subir"); </script>';
-        header("Refresh:1, URL=../principal.php");
+        header("Refresh:1, URL=../tareas.php?id_tar=$id_tar");
         
     }
     
 } else {
     
     echo '<script> alert("ERROR: no se ha encontrado un archivo para subir"); </script>';
-    header("Refresh:1, URL=../principal.php");
+    header("Refresh:1, URL=../tareas.php?id_tar=$id_tar");
     
 }
 
@@ -94,12 +95,12 @@ function guardar($nombre, $tarea, $tipo, $id_tar, $id_am, $conexion){
     if ($query){
 
         echo '<script> alert("Se ha guardado CORRECTAMENTE tu tarea"); </script>';
-        header("Refresh:1, URL=../index.php");
+        header("Refresh:1, URL=../principal.php");
         
         } else {
                     
             echo '<script> alert("ERROR: a habido un problema al guardar tu tarea"); </script>';
-            header("Refresh:1, URL=../index.php");
+            header("Refresh:1, URL=../tareas.php?id_tar=$id_tar");
                 
         }
     

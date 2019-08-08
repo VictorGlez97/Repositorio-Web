@@ -1,12 +1,13 @@
 <?php require_once 'includes/cabecera.php'; ?>
 
 <?php
+    error_reporting(E_ALL ^ E_WARNING);
     if (empty($_SESSION['nombre'])){
         header('Location:index.php');
     }
     
     if ($_SESSION['estatus'] == 'aceptado'){
-        header('Location:index.php');
+        header("Refresh:1, URL=index.php");
     }
     
     if ($_SESSION['rol'] != 1){
