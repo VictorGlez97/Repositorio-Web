@@ -1,3 +1,2 @@
 # Repositorio-Web
-Repositorio WEB Servicio Social
-PHP MySQL
+Repositorio WEB Servicio Social PHP MySQL
